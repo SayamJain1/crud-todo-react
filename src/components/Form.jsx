@@ -1,11 +1,17 @@
 import React from "react";
 import {v4 as uuidv4} from 'uuid'
 
-const Form = ({ input, setInput, todos, setTodos }) => {
+const Form = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
+
+
     const onFormSubmit = (e) => {
         e.preventDefault()
-        setTodos([...todos, {id : uuidv4(), title: input, completed: false}])
-        setInput('')
+        if (!editTodo) {
+                setTodos([...todos, {id : uuidv4(), title: input, completed: false}])
+                setInput('')
+        } else {
+            updateTodo(input, editTodo.id, editTodo.completed)
+        }
     }
   return (
     <form onSubmit={onFormSubmit}>

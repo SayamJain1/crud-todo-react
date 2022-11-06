@@ -16,6 +16,8 @@ function App() {
             setInput={setInput}
             todos={todos}
             setTodos={setTodos}
+            editTodo={editTodo}
+            setEditTodo={setEditTodo}
           />
         </div>
         <div>

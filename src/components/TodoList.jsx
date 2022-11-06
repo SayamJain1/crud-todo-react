@@ -1,6 +1,6 @@
 import React from "react";
 
-const TodoList = ({ todos, setTodos }) => {
+const TodoList = ({ todos, setTodos, setEditTodo }) => {
 
     const handleComplete = (todo) => {
         setTodos(todos.map((todoM) => {
@@ -13,6 +13,11 @@ const TodoList = ({ todos, setTodos }) => {
 
     const handleDelete = (todo) => {
         setTodos(todos.filter((todoF) => todoF.id !== todo.id))
+    }
+
+    const handleEdit = ({ id }) => {
+        const findTodo = todos.find((todo) => todo.id === id);
+        setEditTodo(findTodo)
     }
   return (
     <div>
@@ -28,7 +33,7 @@ const TodoList = ({ todos, setTodos }) => {
             <button className="button-complete list-btn" onClick={() => handleComplete(todo)}>
               <i className="fa-solid fa-circle-check"></i>
             </button>
-            <button className="button-edit list-btn">
+            <button className="button-edit list-btn" onClick={() => handleEdit(todo)}>
               <i className="fa-solid fa-pen-to-square"></i>
             </button>
             <button className="button-complete list-btn" onClick={() => handleDelete(todo)}>
