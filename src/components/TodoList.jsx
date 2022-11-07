@@ -22,11 +22,11 @@ const TodoList = ({ todos, setTodos, setEditTodo }) => {
   return (
     <div>
       {todos.map((todo) => (
-        <li key={todo.id}>
+        <li className="list-item" key={todo.id}>
           <input
             type="text"
             value={todo.title}
-            className={`list ${todo.completed ? 'completed' : ''}`}
+            className={`list ${todo.completed ? 'complete' : ''}`}
             onChange={(e) => e.preventDefault()}
           />
           <div>
@@ -36,7 +36,7 @@ const TodoList = ({ todos, setTodos, setEditTodo }) => {
             <button className="button-edit list-btn" onClick={() => handleEdit(todo)}>
               <i className="fa-solid fa-pen-to-square"></i>
             </button>
-            <button className="button-complete list-btn" onClick={() => handleDelete(todo)}>
+            <button className="button-delete list-btn" onClick={() => handleDelete(todo)}>
               <i className="fa-solid fa-trash-can"></i>
             </button>
           </div>
